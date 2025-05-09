@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+
+<!-- Breadcrumb start -->
+<div class="bg-gray-100 py-3 ">
+  <div class="container mx-auto px-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="" class="block transition hover:text-gray-700">
+            <span class="sr-only"> Home </span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </a>
+        </li>
+
+        <li class="rtl:rotate-180">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9 20.247 6-16.5" />
+          </svg>
+        </li>
+
+        <li>
+          <a href="#" class="block transition hover:text-gray-700"> {{product.category_object}} </a>
+        </li>
+
+        <li class="rtl:rotate-180">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9 20.247 6-16.5" />
+          </svg>
+        </li>
+
+        <li>
+          <a href="#" class="block transition hover:text-gray-700"> {{product.title}} </a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Breadcrumb end -->
+
+<div class="bg-white py-8  px-4 border w-full h-auto rounded-lg shadow-md mb-4 ">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap -mx-4">
+      <!-- Product Images -->
+      <div class="w-full lg:w-1/2 px-4 mb-8 h-10">
+        <div class="relative">
+          {% if product.picture %}
+          <img src="{{product.picture.url}}"  class="w-full h-100 rounded-lg  mb-4">
+          {% else %}
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Product" class="w-full h-auto rounded-lg shadow-md mb-4" id="mainImage">
+          {% endif %}
+          
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="w-full lg:w-1/2  px-4 border  h-full rounded-lg shadow-md mb-4 ">
+        <h2 class="text-3xl font-bold mb-2 mt-3">{{product.title}}</h2>
+        <p class="text-gray-600 mb-4">{{product.brand_object}}</p>
+        <div class="mb-4">
+          <span class="text-2xl font-bold mr-2">₹{{product.price}}</span>
+        </div>
+        <div class="flex items-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-yellow-500">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-yellow-500">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-yellow-500">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-yellow-500">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-yellow-500">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+          </svg>
+          <span class="ml-2 text-gray-600">4.5 (120 reviews)</span>
+        </div>
+        <p class="text-gray-700 mb-6">{{product.description}}</p>
+
+        
+
+        <form action="{% url 'addtocart' product.id %}" method="post">
+          {% csrf_token %}
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold mb-2">Select Size:</h3>
+            <div class="flex items-center mt-2">
+              {% for size in product.size_objects.all %}
+              <label class="text-center ml-3 p-2">
+                <input type="radio" class="flex items-center justify-center w-6 h-6 accent-violet-600 bg-gray-100 rounded-lg dark:bg-gray-600" name="size" value="{{size}}">{{size}}
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5" value="1" class="w-12 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+
+          <div class="flex space-x-4 mb-6">
+            <button
+                type="submit"
+                class="bg-teal-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+                Add to Cart
+            </button>
+            
+          
+
+        </form>
+        <form action="{% url 'add_to_wishlist' product.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-regular fa-heart"></i>   Wishlist                   </a>
+            
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="container ">  
+  <div class="row ">
+    <div class="col ">
+      {% if user.is_authenticated %}
+        {% if product.item_purchased %}
+          <form action="{% url 'submit_review' product.id %}" method="post">
+            {% csrf_token %}
+            <h5>Write Your review</h5>
+            <div>
+              <label>How do you rate this product</label>
+              <br>
+              <div class="rate">
+                <input type="radio" name="rating" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+                <input type="radio" name="rating" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>
+                <input type="radio" name="rating" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                <input type="radio" name="rating" id="rating7" value="3.5" required /><label for="rating7" title="3.5" class="half"></label>
+                <input type="radio" name="rating" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                <input type="radio" name="rating" id="rating5" value="2.5" required /><label for="rating5" title="2.5" class="half"></label>
+                <input type="radio" name="rating" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                <input type="radio" name="rating" id="rating3" value="1.5" required /><label for="rating3" title="1.5" class="half"></label>
+                <input type="radio" name="rating" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                <input type="radio" name="rating" id="rating1" value="0.5" required /><label for="rating1" title="0.5" class="half"></label>
+              </div>
+              <br>
+              Review Title:
+              <input type="text" class="form-control" name="subject">
+              <br>
+              Review:
+              <textarea name="review" class="form-control" rows="4" id=""></textarea>
+              <input type="submit" value="submit review" class="btn btn-primary my-3">
+            </div>
+            {{ form }}
+          </form>
+        {% else %}
+          <p>You can only review products you have purchased.</p>
+        {% endif %}
+      {% else %}
+        <p>You must log in to post a review <span><a href="{% url 'login' %}">Login</a></span></p>
+      {% endif %}
+      <header class="section-heading">
+        <h3>Customer Review</h3>
+        {% for review in reviews %}
+          <article class="box mb-3 shadow my-2">
+            <div class="icontext w-100">
+              <div class="text">
+                <h6 class="mb-1">{{ review.user }} </h6>
+                <div class="rating-star">
+                  <span>
+                    <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                  </span>
+                  <span class="date text-muted text-sm float-md-right">{{ review.updated_at }} </span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <h6>{{ review.subject }}</h6>
+              <p>{{ review.review }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </header>
+    </div>
+  </div>
+</div>
+
+<style>
+ /* Hide Radio button */
+.rate > input{
+display: none;
+}
+
+.rate{
+display: inline-block;;
+border: 0;
+}
+
+.rate > label{
+float: right;
+}
+
+/* Showing the stars */
+.rate > label:before{
+display: inline-block;
+font-size: 1.1rem;
+font-family: FontAwesome;
+content: "\f005";
+margin:0;
+padding:0.3rem .2rem;
+cursor: pointer;
+}
+
+/* Half star */
+.rate .half:before{
+content: "\f089";
+position: absolute;
+padding-right: 0;
+}
+
+/* Click and hover */
+input:checked ~ label, label:hover ~ label{
+color: #ffb503;
+}
+
+/* hover hightlight */
+input:checked + label:hover, input:checked ~ label:hover,input:checked ~ label:hover ~ label,
+label:hover ~ input:checked ~ label{
+color: #cc9000;
+}
+
+.rating-star i{
+color: #ffb503 !important;
+}
+
+ul.thumb{
+margin:0 auto;
+padding: 0;
+float: left;
+}
+ul.thumb li{
+list-style: none;
+margin: 10px;
+}
+ul.thumb li img{
+width: 80px;
+height: 80px;
+border: 1px solid grey;
+}
+</style>
+
+{% endblock %}

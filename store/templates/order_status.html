@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status - Order #{{ order.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-details {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .order-details h2 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+        .order-items {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .order-items th, .order-items td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .order-items th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .order-items img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        .order-status {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .total-amount {
+            float: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="order-details">
+        <h2>Order #{{ order.id }} - Status</h2>
+        <p><strong>Order Status:</strong> <span class="order-status">{{ order_status }}</span></p>
+        <p><strong>Order Date:</strong> {{ order.created_date }}</p>
+    </div>
+
+    <h3>Order Items</h3>
+    <table class="order-items">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.orderitems.all %}
+            <tr>
+                <td>{{ item.product_object.title }}</td>
+                <td><img src="{{ item.product_object.picture.url }}" alt="{{ item.product_object.title }}"></td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.product_object.price }}</td>
+                <td>₹{{ item.item_total}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'download-invoice' order.id %}" class="btn">Download Invoice</a>
+    <div class="total-amount">Total Amount: ₹{{ order.order_total }}</div>
+</div>
+
+</body>
+</html>

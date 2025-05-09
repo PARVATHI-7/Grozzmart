@@ -1,0 +1,22 @@
+class RatingView(View):
+    
+    form_class=RatingForm
+    
+    def post(self,request,*args,**kwargs):
+        
+        form_data=request.POST
+        
+        form_instance=self.form_class(form_data)
+        
+        if form_instance.is_valid():
+            
+            form_instance.instance.user=request.user
+            
+            form_instance.instance.product=Product.objects.get(id=kwargs.get("pk"))
+            
+            form_instance.save()
+            
+            return redirect("product-detail",pk=kwargs.get("pk"))
+        
+        return redirect("product-detail",pk=kwargs.get("pk"))
+    

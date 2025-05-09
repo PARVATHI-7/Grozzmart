@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- tailwind cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--bootstrap cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- navbar starts -->
+
+    <div class=" top-0 left-0 w-full z-50 bg-white border-b  mb-5 backdrop-blur-lg bg-opacity-80">
+      <div class="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8 ">
+          <div class="relative flex h-16 justify-between">
+              <div class="flex flex-1 items-stretch justify-start">
+                  <a class="flex flex-shrink-0 items-center" href="#">
+                      <img class="block h-12 w-auto" src="https://www.svgrepo.com/show/501888/donut.svg" >
+                      <span class="ml-3 font-bold text-lg">GROZZMART</span>
+                  </a>
+              </div>
+
+              <div class="flex-shrink-0 flex px-2 py-3 items-center space-x-8">
+                <ul class="flex  items-center  font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    
+                    <li>
+                      <a href="{% url 'product-list' %}"
+                      <i class="fa-solid fa-house"></i>                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'wishlist' %}"
+                      <i class="fa-regular fa-heart"></i>                      </a>
+                    </li>
+
+                    <a href="{% url 'cart-summary'%}" class="relative">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                      </svg>
+                      <span class="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full text-xs flex items-center justify-center text-white ">{{basket_item_count}}</span>
+                  </a>
+
+
+                    <li>
+                      <a href="{%url 'order-summary'%}"
+                        class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Orders</a>
+                    </li>
+                
+                  </ul>
+                <a
+                href="{% url 'signout' %}"
+                class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                
+                    <span class="text-red-500">Logout</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-red-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10v1m0 4V9m0 6h0m0 6H7a2 2 0 01-2-2V6a2 2 0 012-2h6m6 6h-6"
+                        />
+                    </svg>
+                
+            </a>
+              </div>
+          </div>
+      </div>
+  </div>
+    <!-- navbar ends -->
+
+    {%block main_block%}
+
+    {%endblock%}
+</body>
+</html>
+
+
